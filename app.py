@@ -20,7 +20,7 @@ def verify():
 
     return "Hello world", 200
     
-def send_list_message(recipient_id, elements, title='View More', payload_name='payload'):
+def send_list_message( recipient_id, elements, title='View More', payload_name='payload'):
     payload = {
         'recipient': {
             'id': recipient_id
@@ -110,7 +110,7 @@ def webhook():
                         response=random.choice(vulgur)
                     elif categories.get('bietnotices'):
                         response = biet_announcement('notices')
-                        bot.send_list_message(sender_id, response,'View News & Events','bietnews')
+                        send_list_message(sender_id, response,'View News & Events','bietnews')
                         '''
                     else:
                         response = biet_announcement('news')
@@ -146,10 +146,10 @@ def webhook():
                     
                     if 'bietnotices' in messaging_event['postback']['payload']:
                         response=biet_announcement('notices')
-                        bot.send_list_message(sender_id,response,'View News & Events','bietnews')
+                        send_list_message(sender_id,response,'View News & Events','bietnews')
                     elif 'bietnews' in messaging_event['postback']['payload']:
                         response = biet_announcement('news_events')
-                        bot.send_list_message(sender_id, response,'View Notices', 'bietnotices')
+                        send_list_message(sender_id, response,'View Notices', 'bietnotices')
                     #elif messaging_event['postback']['payload']=='Getting Started':
                     #print("TYPE=  ",type(elements))
                     
