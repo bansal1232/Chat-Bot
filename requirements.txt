@@ -16,3 +16,4 @@ Werkzeug==0.12.2
 wit
 gnewsclient
 wikipedia
+lxml
