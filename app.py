@@ -85,7 +85,6 @@ def webhook():
                         vulgur=['Offending me implies, insulting yourself','Are you taking about yourself, jerk?', 'Thank God! finally got new idiot to talk to','You are living proof that a human can live without a brain!','Same to you, jerk']
                         response=random.choice(vulgur)
                     elif categories.get('bietnotices'):
-                        #print("ENTER BIET")
                         response = biet_announcement('notices')
                         bot.send_list_message(sender_id, response,'View News & Events','bietnews')
                         '''
@@ -112,17 +111,7 @@ def webhook():
                            #if categories['location'] == 'live'
 
                              response=wiki_search(categories['location'])
-
-                        elif categories['location'] == 'biet':
-                            print('BIET \n\n',type(categories['location']),'\n\n\n')
-                            if categories.get('bietnotices'):
-                                response = biet_announcement('notices')
-                                bot.send_list_message(sender_id, response,'View News & Events','bietnews')
-                            else:
-                                response = biet_announcement('news')
-                                bot.send_list_message(sender_id, response,'View Notices','bietnotices')
-                            response = True
-                    
+                                     
                     if response == None:
                         response = "I have no idea what you are saying!"
                         bot.send_text_message(sender_id,response)
