@@ -105,7 +105,7 @@ def webhook():
                     elif categories.get('eat'):
                         response = 'I prefer to eat electricity :)'
 
-                    elif categories.get('abuse'):
+                    elif categories.get('abusive'):
                         vulgur=['Offending me implies, insulting yourself','Are you taking about yourself, jerk?', 'Thank God! finally got new idiot to talk to','You are living proof that a human can live without a brain!','Same to you, jerk']
                         response=random.choice(vulgur)
                     elif categories.get('bietnotices'):
