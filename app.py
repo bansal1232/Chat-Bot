@@ -20,6 +20,30 @@ def verify():
 
     return "Hello world", 200
     
+def send_list_message(recipient_id, elements, title='View More', payload_name='payload'):
+    payload = {
+        'recipient': {
+            'id': recipient_id
+        },
+        'message': {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "list",
+                    "top_element_style": "compact",
+                    "elements": elements,
+                    "buttons": [
+                            {
+                             "title": title,
+                             "type": "postback",
+                             "payload": payload_name            
+                             }
+                              ]  
+                }
+            }
+        }
+    }
+    return bot.send_raw(payload)
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -111,7 +135,7 @@ def webhook():
                            #if categories['location'] == 'live'
 
                              response=wiki_search(categories['location'])
-                                     
+
                     if response == None:
                         response = "I have no idea what you are saying!"
                         bot.send_text_message(sender_id,response)
